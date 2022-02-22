@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,19 +10,28 @@
   <script type="text/javascript">
     $(document).ready(function () {
 
-      $('#ajaxBtn').click(function () {
-
-        $.getJSON('https://jsonplaceholder.typicode.com/users', function (data, textStatus, jqXHR) {
-          $('#use').append(data.name);
-          console.log(data.name)
+      $('#ajaxBtn').click(function (e) {
+        e.preventDefault()
+        $.getJSON('https://jsonplaceholder.typicode.com/users', (data) => {
+        
+          data.forEach(element => {
+            $('#use2').text(`My Name is: ${element.name}`);
+            $('#use').text(` My user name is: ${element.username}`);
+            $('#use3').text(`My Email is: ${element.email}`);
+            
+          });
+          
+          console.log(data)
         });
+      
       });
+      
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <title>Facility Hub</title>
   <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
-
+ 
 
 
 </head>
@@ -186,7 +194,9 @@
                 Association</button>
             </div>
           </form>
-          <p id="use" style="color: black;"></p>
+          <p id="use3" style="color:#0094ff;"></p>
+          <p id="use2" style="color:#535a60;"></p>
+          <p id="use" style="color:#0094ff"></p>
 
 
         </div>
